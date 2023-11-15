@@ -4,11 +4,13 @@ import List from "./components/List/List";
 // import PlaceDetails from "./components/PlaceDetails/PlaceDetails";
 import Header from "./components/Header/Header";
 import { CssBaseline, Grid } from "@material-ui/core";
+import { getPlaces } from "./api";
 
 const App = () => {
   const [coords, setCoords] = useState({});
   //   const [type, setType] = useState("restaurants");
   // const [isLoading, setIsLoading] = useState(false);
+  const [places, setPlaces] = useState([]);
 
   const [bounds, setBounds] = useState(null);
   const [weatherData, setWeatherData] = useState([]);
@@ -20,7 +22,15 @@ const App = () => {
         setCoords({ lat: latitude, lng: longitude });
       }
     );
-  }, [bounds]);
+    getPlaces()
+      .then((res) => {
+        console.log("repsooooooo", res);
+        setPlaces(res);
+      })
+      .catch((err) => console.log(err));
+
+    console.log(places);
+  }, [bounds, places]);
 
   return (
     <>
