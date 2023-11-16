@@ -7,7 +7,7 @@ import { CssBaseline, Grid } from "@material-ui/core";
 import { getPlaces } from "./api";
 
 const App = () => {
-  const [coords, setCoords] = useState({});
+  const [coordinates, setCoordinates] = useState({});
   //   const [type, setType] = useState("restaurants");
   // const [isLoading, setIsLoading] = useState(false);
   const [places, setPlaces] = useState([]);
@@ -16,21 +16,27 @@ const App = () => {
   const [weatherData, setWeatherData] = useState([]);
 
   useEffect(() => {
+    navigator.geolocation.getCurrentPosition(
+      ({ coords: { latitude, longitude } }) => {
+        setCoordinates({ lat: latitude, lng: longitude });
+      }
+    );
+  }, []);
+
+  useEffect(() => {
     console.log(bounds, setWeatherData);
     navigator.geolocation.getCurrentPosition(
       ({ coords: { latitude, longitude } }) => {
-        setCoords({ lat: latitude, lng: longitude });
+        setCoordinates({ lat: latitude, lng: longitude });
       }
     );
-    getPlaces()
+    getPlaces(bounds.sw, bounds.ne)
       .then((res) => {
         console.log("repsooooooo", res);
         setPlaces(res);
       })
       .catch((err) => console.log(err));
-
-    console.log(places);
-  }, [bounds, places]);
+  }, [bounds, coordinates]);
 
   return (
     <>
@@ -43,8 +49,8 @@ const App = () => {
         <Grid item xs={12} md={8}>
           <Map
             setBounds={setBounds}
-            setCoords={setCoords}
-            coords={coords}
+            setCoordinates={setCoordinates}
+            coordinates={coordinates}
             weatherData={weatherData}
           />
         </Grid>

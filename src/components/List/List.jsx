@@ -13,7 +13,7 @@ const List = () => {
   return (
     <div className={classes.container}>
       <Typography variant='h4'>Hotels</Typography>
-      <FormControl className={classes.formControl}>
+      <FormControl className={classes.formControl} style={{marginRight:'1rem'}}>
         <InputLabel>Type</InputLabel>
         <Select value={type} onChange={(e) => setType(e.target.value)}>
           <MenuItem value='Hotels'>Hotels</MenuItem>
@@ -21,7 +21,7 @@ const List = () => {
           <MenuItem value='Places'>Restuarants</MenuItem>
         </Select>
       </FormControl>
-          <FormControl className={classes.formControl}>
+          <FormControl className={classes.formControl} style={{width:'30%'}}>
         <InputLabel>Ratings</InputLabel>
         <Select value={rating} onChange={(e) => setRating(e.target.value)}>
           <MenuItem value={0}>All</MenuItem>

@@ -8,7 +8,7 @@ const center = {
   lng: -38.523,
 };
 const coords = { lat: 0, lng: 0 };
-const Map = () => {
+const Map = ({ coordinates, setBounds, setCoordinates }) => {
   const classes = useStyles();
   return (
     <div className={classes.mapContainer}>
@@ -22,7 +22,11 @@ const Map = () => {
           disableDefaultUI: true,
           zoomControl: true,
         }}
-        onChange={""}
+        onChange={(e) => {
+          console.log("event", e);
+          setCoordinates({ lat: e.center.lat, lng: e.center.lng });
+          setBounds({ ne: e.marginBounds.ne, sw: e.marginBounds.sw });
+        }}
         onChildClick={""}
       ></GoogleMapReact>
     </div>
