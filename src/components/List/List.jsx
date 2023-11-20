@@ -4,12 +4,11 @@ import PlaceDetails from '../PlaceDetails/PlaceDetails.jsx'
 import { FormControl, Grid, InputLabel, MenuItem, Select, Typography } from '@material-ui/core';
 
 
-const List = () => {
+const List = ({places}) => {
   const classes = useStyles();
   const [type, setType] = useState('Hotels')
   const [rating, setRating] = useState('')
 
-   const places = [{name:'bcg'}, {name:'jjjj'}, {name:'jjjjjio'}]
   return (
     <div className={classes.container}>
       <Typography variant='h4'>Hotels</Typography>
@@ -31,7 +30,7 @@ const List = () => {
         </Select>
       </FormControl>
       <Grid container spacing={3} className={classes.list}>
-        {places.map((place, idx) => (<Grid item key={idx} xs={12}>
+        {places?.map((place, idx) => (<Grid item key={idx} xs={12}>
           <PlaceDetails place={place}/>
         </Grid>) )}
 
