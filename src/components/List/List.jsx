@@ -1,23 +1,26 @@
-import React, { useState } from 'react'
+import React from 'react'
 import useStyles from './styles.js'
 import PlaceDetails from '../PlaceDetails/PlaceDetails.jsx'
-import { FormControl, Grid, InputLabel, MenuItem, Select, Typography } from '@material-ui/core';
+import { FormControl, Grid, InputLabel, MenuItem, Select, Typography, CircularProgress} from '@material-ui/core';
 
 
-const List = ({places}) => {
+const List = ({places, childClicked, isLoading, setType, type, setRating, rating}) => {
   const classes = useStyles();
-  const [type, setType] = useState('Hotels')
-  const [rating, setRating] = useState('')
+ 
+
 
   return (
     <div className={classes.container}>
-      <Typography variant='h4'>Hotels</Typography>
-      <FormControl className={classes.formControl} style={{marginRight:'1rem'}}>
+      <Typography variant='h4'>Food & Dining Places</Typography>
+      {isLoading ? (<div className={classes.loading}>
+<CircularProgress size='5rem' />
+      </div>) : (<>
+       <FormControl className={classes.formControl} style={{marginRight:'1rem'}}>
         <InputLabel>Type</InputLabel>
         <Select value={type} onChange={(e) => setType(e.target.value)}>
-          <MenuItem value='Hotels'>Hotels</MenuItem>
-          <MenuItem value='Places'>Places</MenuItem>
-          <MenuItem value='Places'>Restuarants</MenuItem>
+          <MenuItem value='hotels'>Hotels</MenuItem>
+          <MenuItem value='attractions'>Attractions</MenuItem>
+          <MenuItem value='restaurants'>Restuarants</MenuItem>
         </Select>
       </FormControl>
           <FormControl className={classes.formControl} style={{width:'30%'}}>
@@ -35,6 +38,9 @@ const List = ({places}) => {
         </Grid>) )}
 
       </Grid>
+
+      </>)}
+     
    
         </div>
   )

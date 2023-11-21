@@ -11,9 +11,14 @@ const App = () => {
   //   const [type, setType] = useState("restaurants");
   // const [isLoading, setIsLoading] = useState(false);
   const [places, setPlaces] = useState([]);
+  const [childClicked, setChildClicked] = useState(null);
+  const [type, setType] = useState("hotels");
+  const [rating, setRating] = useState("");
+  const [filteredPlaces, setFilterdPlaces] = useState([]);
 
   const [bounds, setBounds] = useState({});
   const [weatherData, setWeatherData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
@@ -24,33 +29,51 @@ const App = () => {
   }, []);
 
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition(
-      ({ coords: { latitude, longitude } }) => {
-        setCoordinates({ lat: latitude, lng: longitude });
-      }
-    );
-    getPlaces(bounds.sw, bounds.ne)
+    const filteredPlaces = places.filter((place) => place.rating > rating);
+
+    setFilterdPlaces(filteredPlaces);
+  }, [rating]);
+
+  useEffect(() => {
+    // navigator.geolocation.getCurrentPosition(
+    //   ({ coords: { latitude, longitude } }) => {
+    //     setCoordinates({ lat: latitude, lng: longitude });
+    //   }
+    // );
+    setIsLoading(true);
+    getPlaces(type, bounds.sw, bounds.ne)
       .then((res) => {
+        setIsLoading(false);
+        setFilterdPlaces([]);
         setPlaces(res);
       })
       .catch((err) => console.log(err));
-  }, [bounds]);
+  }, [bounds, coordinates, type]);
 
   return (
     <>
       <CssBaseline />
-      <Header />
+      <Header setCoordinates={setCoordinates} />
       <Grid container spacing={3} style={{ width: "100%" }}>
         <Grid item xs={12} md={4}>
-          <List places={places} />
+          <List
+            places={filteredPlaces?.length ? filteredPlaces : places}
+            childClicked={childClicked}
+            isLoading={isLoading}
+            type={type}
+            setType={setType}
+            rating={rating}
+            setRating={setRating}
+          />
         </Grid>
         <Grid item xs={12} md={8}>
           <Map
             setBounds={setBounds}
-            places={places}
+            places={filteredPlaces?.length ? filteredPlaces : places}
             setCoordinates={setCoordinates}
             coordinates={coordinates}
             weatherData={weatherData}
+            setChildClicked={setChildClicked}
           />
         </Grid>
       </Grid>
