@@ -19,6 +19,17 @@ const App = () => {
   const [bounds, setBounds] = useState({});
   const [weatherData, setWeatherData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [autoComplete, setAutoComplete] = useState(null);
+
+  const onLoad = (autoCom) => setAutoComplete(autoCom);
+
+  const onPlaceChanged = () => {
+    const lat = autoComplete.getPlace().geometry.location.lat();
+    const lng = autoComplete.getPlace().geometry.location.lng();
+    console.log({ lat, lng });
+
+    setCoordinates({ lat: lat, lng: lng });
+  };
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
@@ -53,7 +64,7 @@ const App = () => {
   return (
     <>
       <CssBaseline />
-      <Header setCoordinates={setCoordinates} />
+      <Header onLoad={onLoad} onPlaceChanged={onPlaceChanged} />
       <Grid container spacing={3} style={{ width: "100%" }}>
         <Grid item xs={12} md={4}>
           <List
