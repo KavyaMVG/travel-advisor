@@ -4,6 +4,7 @@ import axios from "axios";
 //   "https://travel-advisor.p.rapidapi.com/restaurants/list-in-boundary";
 
 export const getPlaces = async (type, sw, ne) => {
+  if (!sw || !ne) return;
   try {
     const {
       data: { data },

@@ -43,4 +43,15 @@ export default makeStyles((theme) => ({
     display: "flex",
     justifyContent: "space-between",
   },
+  savedModal: {
+    position: "absolute",
+    top: "-30%",
+    transform: "translate(20px, 50%)",
+    height: "77vh",
+    overflow: "auto",
+    backgroundColor: "#fafafa",
+    border: "1px solid #000",
+    boxShadow: 24,
+    p: 4,
+  },
 }));

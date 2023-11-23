@@ -10,8 +10,8 @@ import { mapStyles } from "../../mapStyles.js";
 //   {
 //     name: "helll",
 //     rating: "11000",
-//     latitude: "12.89773",
-//     longitude: "77.5892",
+//     latitude: "12.893472",
+//     longitude: "77.55841",
 //     photo: {
 //       images: {
 //         small: {
@@ -26,8 +26,8 @@ import { mapStyles } from "../../mapStyles.js";
 //   {
 //     name: "heii",
 //     rating: "14000",
-//     latitude: "12.89773",
-//     longitude: "77.5892",
+//     latitude: "12.883472",
+//     longitude: "77.56841",
 //     // photo: {
 //     //   images: {
 //     //     small: {
@@ -41,8 +41,8 @@ import { mapStyles } from "../../mapStyles.js";
 //   {
 //     name: "cute",
 //     rating: "1000",
-//     latitude: 12.89773,
-//     longitude: 77.5892,
+//     latitude: "12.873472",
+//     longitude: "77.57841",
 //   },
 // ];
 
@@ -56,17 +56,12 @@ const Map = ({
   const classes = useStyles();
   const isDesktop = useMediaQuery("(min-width:600px)");
 
-  // const filteredPlaces = places?.filter(
-  //   (place) => place.latitude !== undefined && place.longitude !== undefined
-  // );
-  // console.log({ filteredPlaces });
-
   return (
     <div className={classes.mapContainer}>
       <GoogleMapReact
         center={coordinates}
         defaultCenter={coordinates}
-        bootstrapURLKeys={process.env.MAP_API_KEY}
+        bootstrapURLKeys={{ key: "AIzaSyAC9mKneWh_spCmyaIUnEJLYkDqryziHqk" }}
         defaultZoom={14}
         margin={[50, 50, 50, 50]}
         options={{
@@ -80,14 +75,15 @@ const Map = ({
         }}
         onChildClick={(child) => setChildClicked(child)}
       >
-        {places?.map((place, idx) => (
-          <div
-            className={classes.markerContainer}
-            lat={Number(place.latitude)}
-            lng={Number(place.longitude)}
-            key={idx}
-          >
-            {/* {console.log(
+        {places?.length &&
+          places.map((place, idx) => (
+            <div
+              className={classes.markerContainer}
+              lat={Number(place.latitude)}
+              lng={Number(place.longitude)}
+              key={idx}
+            >
+              {/* {console.log(
               "placeiiiiiii",
               place.latitude,
               place.longitude,
@@ -95,19 +91,19 @@ const Map = ({
               place.rating,
               place.name
             )} */}
-            {!isDesktop ? (
-              <LocationOnOutlinedIcon color="primary" fontSize="large" />
-            ) : (
-              <Paper elevation={3} className={classes.paper}>
-                <Typography
-                  className={classes.typography}
-                  variant="subtitle2"
-                  gutterBottom
-                >
-                  {" "}
-                  {place.name}
-                </Typography>
-                {/* <img
+              {!isDesktop ? (
+                <LocationOnOutlinedIcon color="primary" fontSize="large" />
+              ) : (
+                <Paper elevation={3} className={classes.paper}>
+                  <Typography
+                    className={classes.typography}
+                    variant="subtitle2"
+                    gutterBottom
+                  >
+                    {" "}
+                    {place.name}
+                  </Typography>
+                  {/* <img
                   alt=""
                   className={classes.pointer}
                   src={
@@ -116,29 +112,29 @@ const Map = ({
                       : "https://www.foodserviceandhospitality.com/wp-content/uploads/2016/09/Restaurant-Placeholder-001.jpg"
                   }
                 /> */}
-                {place.photo?.images?.large?.url ? (
-                  <img
-                    alt=""
-                    className={classes.pointer}
-                    src={place.photo.images.large.url}
+                  {place.photo?.images?.large?.url ? (
+                    <img
+                      alt=""
+                      className={classes.pointer}
+                      src={place.photo.images.large.url}
+                    />
+                  ) : (
+                    <img
+                      alt=""
+                      className={classes.pointer}
+                      src="https://media-cdn.tripadvisor.com/media/photo-l/1c/86/84/e6/img-20210111-wa0034-largejpg.jpg"
+                    />
+                  )}
+                  <Rating
+                    name="read-only"
+                    size="small"
+                    value={Number(place.rating)}
+                    readOnly
                   />
-                ) : (
-                  <img
-                    alt=""
-                    className={classes.pointer}
-                    src="https://media-cdn.tripadvisor.com/media/photo-l/1c/86/84/e6/img-20210111-wa0034-largejpg.jpg"
-                  />
-                )}
-                <Rating
-                  name="read-only"
-                  size="small"
-                  value={Number(place.rating)}
-                  readOnly
-                />
-              </Paper>
-            )}
-          </div>
-        ))}
+                </Paper>
+              )}
+            </div>
+          ))}
       </GoogleMapReact>
     </div>
   );

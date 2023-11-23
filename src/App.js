@@ -15,6 +15,7 @@ const App = () => {
   const [type, setType] = useState("hotels");
   const [rating, setRating] = useState("");
   const [filteredPlaces, setFilterdPlaces] = useState([]);
+  const [savedPlaces, setSavedPlaces] = useState([]);
 
   const [bounds, setBounds] = useState({});
   const [weatherData, setWeatherData] = useState([]);
@@ -52,19 +53,26 @@ const App = () => {
     //   }
     // );
     setIsLoading(true);
-    getPlaces(type, bounds.sw, bounds.ne)
-      .then((res) => {
-        setIsLoading(false);
-        setFilterdPlaces([]);
-        setPlaces(res);
-      })
-      .catch((err) => console.log(err));
+    if (bounds) {
+      getPlaces(type, bounds.sw, bounds.ne)
+        .then((res) => {
+          setIsLoading(false);
+          setFilterdPlaces([]);
+          setPlaces(res);
+        })
+        .catch((err) => console.log(err));
+    }
   }, [bounds, coordinates, type]);
 
   return (
     <>
       <CssBaseline />
-      <Header onLoad={onLoad} onPlaceChanged={onPlaceChanged} />
+      <Header
+        onLoad={onLoad}
+        onPlaceChanged={onPlaceChanged}
+        savedPlaces={savedPlaces}
+        setSavedPlaces={setSavedPlaces}
+      />
       <Grid container spacing={3} style={{ width: "100%" }}>
         <Grid item xs={12} md={4}>
           <List
@@ -74,6 +82,8 @@ const App = () => {
             type={type}
             setType={setType}
             rating={rating}
+            setSavedPlaces={setSavedPlaces}
+            savedPlaces={savedPlaces}
             setRating={setRating}
           />
         </Grid>
