@@ -42,17 +42,28 @@ const Header = ({ onLoad, onPlaceChanged, savedPlaces, setSavedPlaces }) => {
     const filterdPlaces = savedPlaces.filter(
       (places) => places.name !== deletedPlace.name
     );
+
     setSavedPlaces(filterdPlaces);
+
+    if (filterdPlaces.length === 0) {
+      setOpen(false);
+    }
   };
 
   return (
     <AppBar position="static">
       <Toolbar className={classes.toolbar}>
-        <Typography variant="h6" className={classes.title}>
+        <Typography
+          style={{ fontSize: "1.15rem", fontWeight: 500 }}
+          className={classes.title}
+        >
           Travel Advisor
         </Typography>
         <Box style={{ display: "flex", alignItems: "center" }}>
-          <Typography variant="h6" className={classes.title}>
+          <Typography
+            style={{ fontSize: "1.15rem", fontWeight: 500 }}
+            className={classes.title}
+          >
             Explore New Places
           </Typography>
           <Autocomplete onLoad={onLoad} onPlaceChanged={onPlaceChanged}>
@@ -70,6 +81,7 @@ const Header = ({ onLoad, onPlaceChanged, savedPlaces, setSavedPlaces }) => {
             <StarRateIcon onClick={() => setOpen(true)} />
           )}
         </Box>
+        {/* {savedPlaces?.length > 0 && ( */}
         <Modal
           open={open}
           onClose={() => setOpen(false)}
@@ -202,6 +214,7 @@ const Header = ({ onLoad, onPlaceChanged, savedPlaces, setSavedPlaces }) => {
             </div>
           </Box>
         </Modal>
+        {/* )} */}
       </Toolbar>
     </AppBar>
   );

@@ -8,8 +8,7 @@ import { getPlaces } from "./api";
 
 const App = () => {
   const [coordinates, setCoordinates] = useState({});
-  //   const [type, setType] = useState("restaurants");
-  // const [isLoading, setIsLoading] = useState(false);
+
   const [places, setPlaces] = useState([]);
   const [childClicked, setChildClicked] = useState(null);
   const [type, setType] = useState("hotels");
@@ -18,7 +17,7 @@ const App = () => {
   const [savedPlaces, setSavedPlaces] = useState([]);
 
   const [bounds, setBounds] = useState({});
-  const [weatherData, setWeatherData] = useState([]);
+  // const [weatherData, setWeatherData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [autoComplete, setAutoComplete] = useState(null);
 
@@ -47,7 +46,7 @@ const App = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    if (bounds) {
+    if (bounds.sw && bounds.ne) {
       getPlaces(type, bounds.sw, bounds.ne)
         .then((response) => {
           setIsLoading(false);
@@ -58,7 +57,9 @@ const App = () => {
         })
         .catch((err) => console.log(err));
     }
-  }, [bounds, coordinates, type]);
+
+    // coordinates;
+  }, [bounds, type]);
 
   return (
     <>
@@ -89,7 +90,7 @@ const App = () => {
             places={filteredPlaces?.length ? filteredPlaces : places}
             setCoordinates={setCoordinates}
             coordinates={coordinates}
-            weatherData={weatherData}
+            // weatherData={weatherData}
             setChildClicked={setChildClicked}
           />
         </Grid>

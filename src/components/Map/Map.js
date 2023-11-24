@@ -4,7 +4,7 @@ import useStyles from "./styles.js";
 import { Paper, Typography, useMediaQuery } from "@material-ui/core";
 import LocationOnOutlinedIcon from "@material-ui/icons/LocationOnOutlined";
 import Rating from "@material-ui/lab/Rating";
-import { mapStyles } from "../../mapStyles.js";
+import { mapStyles } from "./mapStyles.js";
 
 const Map = ({
   coordinates,
@@ -21,7 +21,7 @@ const Map = ({
       <GoogleMapReact
         center={coordinates}
         defaultCenter={coordinates}
-        bootstrapURLKeys={{ key: "AIzaSyAC9mKneWh_spCmyaIUnEJLYkDqryziHqk" }}
+        bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAP_API_KEY }}
         defaultZoom={14}
         margin={[50, 50, 50, 50]}
         options={{
@@ -55,15 +55,7 @@ const Map = ({
                     {" "}
                     {place.name}
                   </Typography>
-                  {/* <img
-                  alt=""
-                  className={classes.pointer}
-                  src={
-                    place.photo
-                      ? place.photo.images.small.url
-                      : "https://www.foodserviceandhospitality.com/wp-content/uploads/2016/09/Restaurant-Placeholder-001.jpg"
-                  }
-                /> */}
+
                   {place.photo?.images?.large?.url ? (
                     <img
                       alt=""
@@ -74,7 +66,7 @@ const Map = ({
                     <img
                       alt=""
                       className={classes.pointer}
-                      src="https://media-cdn.tripadvisor.com/media/photo-l/1c/86/84/e6/img-20210111-wa0034-largejpg.jpg"
+                      src="https://via.placeholder.com/300/CCCCCC/FFFFFF?text=Not Available"
                     />
                   )}
                   <Rating

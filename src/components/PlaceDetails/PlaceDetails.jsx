@@ -23,7 +23,7 @@ const PlaceDetails = forwardRef(
     const [isSaved, setIsSaved] = useState(false);
 
     if (selected) {
-      ref?.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      ref?.current?.scrollIntoView({ behavior: "smooth" });
     }
 
     const handleClose = (event, reason) => {
