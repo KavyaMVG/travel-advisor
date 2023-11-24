@@ -50,6 +50,13 @@ const Header = ({ onLoad, onPlaceChanged, savedPlaces, setSavedPlaces }) => {
     }
   };
 
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      onPlaceChanged();
+    }
+  };
+
   return (
     <AppBar position="static">
       <Toolbar className={classes.toolbar}>
@@ -74,6 +81,7 @@ const Header = ({ onLoad, onPlaceChanged, savedPlaces, setSavedPlaces }) => {
               <InputBase
                 placeholder="Search...."
                 classes={{ root: classes.inputInput }}
+                onKeyDown={handleKeyDown}
               />
             </div>
           </Autocomplete>
@@ -81,7 +89,6 @@ const Header = ({ onLoad, onPlaceChanged, savedPlaces, setSavedPlaces }) => {
             <StarRateIcon onClick={() => setOpen(true)} />
           )}
         </Box>
-        {/* {savedPlaces?.length > 0 && ( */}
         <Modal
           open={open}
           onClose={() => setOpen(false)}
@@ -214,7 +221,6 @@ const Header = ({ onLoad, onPlaceChanged, savedPlaces, setSavedPlaces }) => {
             </div>
           </Box>
         </Modal>
-        {/* )} */}
       </Toolbar>
     </AppBar>
   );
