@@ -27,7 +27,6 @@ const App = () => {
   const onPlaceChanged = () => {
     const lat = autoComplete.getPlace().geometry.location.lat();
     const lng = autoComplete.getPlace().geometry.location.lng();
-    console.log({ lat, lng });
 
     setCoordinates({ lat: lat, lng: lng });
   };
@@ -47,18 +46,15 @@ const App = () => {
   }, [rating]);
 
   useEffect(() => {
-    // navigator.geolocation.getCurrentPosition(
-    //   ({ coords: { latitude, longitude } }) => {
-    //     setCoordinates({ lat: latitude, lng: longitude });
-    //   }
-    // );
     setIsLoading(true);
     if (bounds) {
       getPlaces(type, bounds.sw, bounds.ne)
-        .then((res) => {
+        .then((response) => {
           setIsLoading(false);
           setFilterdPlaces([]);
-          setPlaces(res);
+          setPlaces(
+            response?.filter((place) => place.name && place.num_reviews > 0)
+          );
         })
         .catch((err) => console.log(err));
     }

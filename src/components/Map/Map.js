@@ -6,46 +6,6 @@ import LocationOnOutlinedIcon from "@material-ui/icons/LocationOnOutlined";
 import Rating from "@material-ui/lab/Rating";
 import { mapStyles } from "../../mapStyles.js";
 
-// const dummyPlaces = [
-//   {
-//     name: "helll",
-//     rating: "11000",
-//     latitude: "12.893472",
-//     longitude: "77.55841",
-//     photo: {
-//       images: {
-//         small: {
-//           height: "150",
-//           url: "https://media-cdn.tripadvisor.com/media/photo-l/1c/86/84/e6/img-20210111-wa0034-largejpg.jpg",
-//           width: "150",
-//         },
-//       },
-//     },
-//   },
-
-//   {
-//     name: "heii",
-//     rating: "14000",
-//     latitude: "12.883472",
-//     longitude: "77.56841",
-//     // photo: {
-//     //   images: {
-//     //     small: {
-//     //       height: "150",
-//     //       url: "https://media-cdn.tripadvisor.com/media/photo-l/1c/86/84/e6/img-20210111-wa0034-largejpg.jpg",
-//     //       width: "150",
-//     //     },
-//     //   },
-//     // },
-//   },
-//   {
-//     name: "cute",
-//     rating: "1000",
-//     latitude: "12.873472",
-//     longitude: "77.57841",
-//   },
-// ];
-
 const Map = ({
   coordinates,
   setBounds,
@@ -83,14 +43,6 @@ const Map = ({
               lng={Number(place.longitude)}
               key={idx}
             >
-              {/* {console.log(
-              "placeiiiiiii",
-              place.latitude,
-              place.longitude,
-              place?.photo?.images.small.url,
-              place.rating,
-              place.name
-            )} */}
               {!isDesktop ? (
                 <LocationOnOutlinedIcon color="primary" fontSize="large" />
               ) : (

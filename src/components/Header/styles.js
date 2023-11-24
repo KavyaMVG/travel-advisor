@@ -54,4 +54,10 @@ export default makeStyles((theme) => ({
     boxShadow: 24,
     p: 4,
   },
+  saveModalTitle: {
+    textAlign: "center",
+    padding: "1rem",
+    position: "absolute",
+    left: "50%",
+  },
 }));
