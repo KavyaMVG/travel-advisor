@@ -20,7 +20,6 @@ const PlaceDetails = forwardRef(
   ({ place, setSavedPlaces, savedPlaces, selected }, ref) => {
     const classes = useStyles();
     const [open, setOpen] = useState(false);
-    const [isSaved, setIsSaved] = useState(false);
 
     if (selected) {
       ref?.current?.scrollIntoView({ behavior: "smooth" });
@@ -33,10 +32,10 @@ const PlaceDetails = forwardRef(
       setOpen(false);
     };
     const handleSaveClick = (e) => {
-      if (!isSaved) {
+      if (!place.isSaved) {
         setOpen(true);
+        place.isSaved = true;
         setSavedPlaces([...savedPlaces, place]);
-        setIsSaved(true);
       }
     };
 
@@ -124,8 +123,9 @@ const PlaceDetails = forwardRef(
           >
             Website
           </Button>
+
           <Button size="small" color="primary" onClick={handleSaveClick}>
-            {isSaved ? "Saved" : "Save"}
+            {place.isSaved ? "Saved" : "Save"}
           </Button>
           <Snackbar
             open={open}

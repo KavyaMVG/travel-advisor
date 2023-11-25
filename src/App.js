@@ -68,6 +68,8 @@ const App = () => {
         onLoad={onLoad}
         onPlaceChanged={onPlaceChanged}
         savedPlaces={savedPlaces}
+        places={places}
+        setPlaces={setPlaces}
         setSavedPlaces={setSavedPlaces}
       />
       <Grid container spacing={3} style={{ width: "100%" }}>

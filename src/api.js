@@ -23,7 +23,12 @@ export const getPlaces = async (type, sw, ne) => {
         },
       }
     );
-    return data;
+    return data.map((place) => {
+      return {
+        ...place,
+        isSaved: false,
+      };
+    });
   } catch (error) {
     console.log(error);
   }
