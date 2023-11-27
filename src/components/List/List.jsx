@@ -1,4 +1,4 @@
-import React, { useEffect, createRef, useState } from "react";
+import React from "react";
 import useStyles from "./styles.js";
 import PlaceDetails from "../PlaceDetails/PlaceDetails.jsx";
 import {
@@ -15,23 +15,23 @@ const List = ({
   places,
   setSavedPlaces,
   savedPlaces,
-  childClicked,
   isLoading,
   setType,
   type,
   setRating,
   rating,
+  removePlace,
 }) => {
   const classes = useStyles();
-  const [elRefs, setElRefs] = useState([]);
+  // const [elRefs, setElRefs] = useState([]);
 
-  useEffect(() => {
-    setElRefs((refs) =>
-      Array(places?.length)
-        .fill()
-        .map((_, i) => refs[i] || createRef())
-    );
-  }, [places]);
+  // useEffect(() => {
+  //   setElRefs((refs) =>
+  //     Array(places?.length)
+  //       .fill()
+  //       .map((_, i) => refs[i] || createRef())
+  //   );
+  // }, [places]);
 
   return (
     <div className={classes.container}>
@@ -78,8 +78,7 @@ const List = ({
                   place={place}
                   setSavedPlaces={setSavedPlaces}
                   savedPlaces={savedPlaces}
-                  selected={Number(childClicked) === idx}
-                  ref={elRefs[idx]}
+                  removePlace={removePlace}
                 />
               </Grid>
             ))}

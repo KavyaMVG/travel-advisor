@@ -10,7 +10,7 @@ const App = () => {
   const [coordinates, setCoordinates] = useState({});
 
   const [places, setPlaces] = useState([]);
-  const [childClicked, setChildClicked] = useState(null);
+  // const [childClicked, setChildClicked] = useState(null);
   const [type, setType] = useState("hotels");
   const [rating, setRating] = useState("");
   const [filteredPlaces, setFilterdPlaces] = useState([]);
@@ -24,10 +24,16 @@ const App = () => {
   const onLoad = (autoCom) => setAutoComplete(autoCom);
 
   const onPlaceChanged = () => {
-    const lat = autoComplete.getPlace().geometry.location.lat();
-    const lng = autoComplete.getPlace().geometry.location.lng();
+    const place = autoComplete.getPlace();
 
-    setCoordinates({ lat: lat, lng: lng });
+    if (place.geometry && place.geometry.location) {
+      const lat = place.geometry.location.lat();
+      const lng = place.geometry.location.lng();
+
+      console.log("lat", lat, lng);
+
+      setCoordinates({ lat, lng });
+    }
   };
 
   useEffect(() => {
@@ -76,7 +82,6 @@ const App = () => {
         <Grid item xs={12} md={4}>
           <List
             places={filteredPlaces?.length ? filteredPlaces : places}
-            childClicked={childClicked}
             isLoading={isLoading}
             type={type}
             setType={setType}
@@ -92,8 +97,6 @@ const App = () => {
             places={filteredPlaces?.length ? filteredPlaces : places}
             setCoordinates={setCoordinates}
             coordinates={coordinates}
-            // weatherData={weatherData}
-            setChildClicked={setChildClicked}
           />
         </Grid>
       </Grid>

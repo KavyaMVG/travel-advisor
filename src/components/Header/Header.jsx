@@ -35,8 +35,8 @@ const Header = ({
   places,
 }) => {
   const classes = useStyles();
-
   const [open, setOpen] = useState(false);
+
   const containerStyle = {
     display: "grid",
     gridTemplateColumns: "repeat(4, 1fr)",
@@ -53,8 +53,10 @@ const Header = ({
       return place;
     });
     setPlaces(allPlaces);
+    const remainingSavedPlaces = allPlaces.filter((place) => place.isSaved);
+    setSavedPlaces(remainingSavedPlaces);
 
-    if (allPlaces.length === 0) {
+    if (remainingSavedPlaces.length === 0) {
       setOpen(false);
     }
   };
@@ -94,9 +96,9 @@ const Header = ({
               />
             </div>
           </Autocomplete>
-          {/* {savedPlaces?.length > 0 && ( */}
-          <StarRateIcon onClick={() => setOpen(true)} />
-          {/* )} */}
+          {savedPlaces?.length !== 0 && (
+            <StarRateIcon onClick={() => setOpen(true)} />
+          )}
         </Box>
         <Modal
           open={open}
@@ -115,7 +117,8 @@ const Header = ({
                 top: 0,
                 left: 0,
                 right: 0,
-                backgroundColor: "#fafafa",
+                backgroundColor: "#f1f1f1",
+                color: "#000",
                 padding: "10px",
                 zIndex: 1000,
               }}
@@ -123,10 +126,10 @@ const Header = ({
               Saved Places
             </Typography>
             <div
-              style={{ marginTop: "3rem", overflow: "auto", padding: "10px" }}
+            // style={{ marginTop: "3rem", overflow: "auto", padding: "10px" }}
             >
               <Grid style={containerStyle}>
-                {places
+                {savedPlaces
                   ?.filter((place) => place.isSaved)
                   .map((place, idx) => (
                     <Card
@@ -174,9 +177,17 @@ const Header = ({
                           </Typography>
                         </Box>
 
-                        <Box display="flex" justifyContent="space-between">
+                        <Box
+                          display="flex"
+                          justifyContent="space-between"
+                          my={1}
+                        >
                           <Typography component="legend">Ranking</Typography>
-                          <Typography gutterBottom variant="subtitle1">
+                          <Typography
+                            gutterBottom
+                            variant="subtitle2"
+                            style={{ width: "50%" }}
+                          >
                             {place.ranking}
                           </Typography>
                         </Box>

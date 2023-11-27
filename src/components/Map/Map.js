@@ -11,7 +11,7 @@ const Map = ({
   setBounds,
   setCoordinates,
   places,
-  setChildClicked,
+  // setChildClicked,
 }) => {
   const classes = useStyles();
   const isDesktop = useMediaQuery("(min-width:600px)");
@@ -33,7 +33,7 @@ const Map = ({
           setCoordinates({ lat: e.center.lat, lng: e.center.lng });
           setBounds({ ne: e.marginBounds.ne, sw: e.marginBounds.sw });
         }}
-        onChildClick={(child) => setChildClicked(child)}
+        // onChildClick={(child) => setChildClicked(child)}
       >
         {places?.length &&
           places.map((place, idx) => (
