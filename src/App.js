@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Map from "./components/Map/Map";
 import List from "./components/List/List";
-// import PlaceDetails from "./components/PlaceDetails/PlaceDetails";
 import Header from "./components/Header/Header";
 import { CssBaseline, Grid } from "@material-ui/core";
 import { getPlaces } from "./api";
@@ -10,14 +9,12 @@ const App = () => {
   const [coordinates, setCoordinates] = useState({});
 
   const [places, setPlaces] = useState([]);
-  // const [childClicked, setChildClicked] = useState(null);
   const [type, setType] = useState("hotels");
   const [rating, setRating] = useState("");
   const [filteredPlaces, setFilterdPlaces] = useState([]);
   const [savedPlaces, setSavedPlaces] = useState([]);
 
   const [bounds, setBounds] = useState({});
-  // const [weatherData, setWeatherData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [autoComplete, setAutoComplete] = useState(null);
 

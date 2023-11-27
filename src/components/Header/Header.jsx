@@ -118,7 +118,7 @@ const Header = ({
                 left: 0,
                 right: 0,
                 backgroundColor: "#f1f1f1",
-                color: "#000",
+                color: "#fff",
                 padding: "10px",
                 zIndex: 1000,
               }}
