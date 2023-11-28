@@ -1,70 +1,32 @@
-# Getting Started with Create React App
+![made-with-React](https://img.shields.io/badge/Made%20with-HTML%20-blue?style=for-the-badge)
+[![Material-UI](https://img.shields.io/badge/Material_UI-0081CB?style=for-the-badge&logo=material-ui&logoColor=white)](https://material-ui.com/)
+![Time taken](https://img.shields.io/badge/Time%20taken-01W:0H%3A00M%3A00S-tomato?style=for-the-badge&logo=Clockify)
+[![Demo](https://img.shields.io/badge/See%20Demo-Visit-green?style=for-the-badge&logo=web)](link-deploy)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Travel Advisor
 
-## Available Scripts
+App built using React and material ui.
 
-In the project directory, you can run:
+### Screenshot
 
-### `npm start`
+![Project live image](./travel-advisor.png)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Author
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<a href="https://github.com/kavyamvg"> <img src="https://github.com/kavyamvg.png" alt="Kavya M V" style="width:50px;"/></a>
 
-### `npm test`
+### Development
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Want to contribute? Great!
 
-### `npm run build`
+To fix a bug or enhance an existing module, follow these steps:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Fork the repo
+- Make the appropriate changes in the files
+- Commit your changes (`git commit -m 'Message goes here'`)
+- Push to the branch (`git push`)
+- Create a Pull Request
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Bug / Feature Request
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+If you find a bug or to request a new feature, kindly open an issue [here](https://github.com/KavyaMVG/travel-advisor/issues/new).
