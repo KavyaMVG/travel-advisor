@@ -20,6 +20,21 @@ export default makeStyles((theme) => ({
       width: "auto",
     },
   },
+  chip: {
+    margin: "2px 2px 2px 0",
+  },
+  subtitle: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    marginTop: "10px",
+  },
+  spacing: {
+    display: "flex",
+    alignItems: "center",
+    margin: ".5rem 0rem",
+    justifyContent: "space-between",
+  },
   searchIcon: {
     padding: theme.spacing(0, 2),
     height: "100%",

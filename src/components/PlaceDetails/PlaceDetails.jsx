@@ -16,7 +16,16 @@ import PhoneIcon from "@material-ui/icons/Phone";
 import { Button } from "@material-ui/core";
 import { Rating } from "@material-ui/lab";
 
-const PlaceDetails = ({ place, setSavedPlaces, savedPlaces }) => {
+const PlaceDetails = ({
+  place,
+  setSavedPlaces,
+  savedPlaces,
+  selected,
+  refProp,
+}) => {
+  if (selected)
+    refProp?.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+
   const classes = useStyles();
   const [open, setOpen] = useState(false);
 

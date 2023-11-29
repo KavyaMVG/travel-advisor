@@ -1,4 +1,4 @@
-import React from "react";
+import React, { createRef, useEffect, useState } from "react";
 import useStyles from "./styles.js";
 import PlaceDetails from "../PlaceDetails/PlaceDetails.jsx";
 import {
@@ -18,20 +18,21 @@ const List = ({
   isLoading,
   setType,
   type,
+  childClicked,
   setRating,
   rating,
   removePlace,
 }) => {
   const classes = useStyles();
-  // const [elRefs, setElRefs] = useState([]);
+  const [elRefs, setElRefs] = useState([]);
 
-  // useEffect(() => {
-  //   setElRefs((refs) =>
-  //     Array(places?.length)
-  //       .fill()
-  //       .map((_, i) => refs[i] || createRef())
-  //   );
-  // }, [places]);
+  useEffect(() => {
+    setElRefs((refs) =>
+      Array(places?.length)
+        .fill()
+        .map((_, i) => refs[i] || createRef())
+    );
+  }, [places]);
 
   return (
     <div className={classes.container}>
@@ -73,12 +74,14 @@ const List = ({
 
           <Grid container spacing={3} className={classes.list}>
             {places?.map((place, idx) => (
-              <Grid item key={idx} xs={12}>
+              <Grid ref={elRefs[idx]} item key={idx} xs={12}>
                 <PlaceDetails
                   place={place}
                   setSavedPlaces={setSavedPlaces}
                   savedPlaces={savedPlaces}
                   removePlace={removePlace}
+                  selected={Number(childClicked) === idx}
+                  refProp={elRefs[idx]}
                 />
               </Grid>
             ))}

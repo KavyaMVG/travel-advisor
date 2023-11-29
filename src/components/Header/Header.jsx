@@ -118,7 +118,7 @@ const Header = ({
                 left: 0,
                 right: 0,
                 backgroundColor: "#f1f1f1",
-                color: "#fff",
+                color: "#000",
                 padding: "10px",
                 zIndex: 1000,
               }}
@@ -135,7 +135,7 @@ const Header = ({
                     <Card
                       elevation={4}
                       key={idx}
-                      style={{ width: "100%", flex: "1 1" }}
+                      style={{ width: "300px", flex: "1 1" }}
                     >
                       <CardMedia
                         style={{ height: 200 }}
@@ -146,7 +146,7 @@ const Header = ({
                         }
                         title={place.name}
                       />
-                      <CardContent>
+                      <CardContent style={{ height: 400 }}>
                         <Typography gutterBottom variant="h6">
                           {place.name}
                         </Typography>
@@ -200,28 +200,25 @@ const Header = ({
                           />
                         ))}
 
-                        {place?.address && (
-                          <Typography
-                            gutterBottom
-                            variant="body2"
-                            color="textSecondary"
-                            className={classes.subtitle}
-                          >
-                            <LocationOnIcon />
-                            {place.address}
-                          </Typography>
-                        )}
-                        {place.phone && (
-                          <Typography
-                            variant="body2"
-                            color="textSecondary"
-                            className={classes.spacing}
-                          >
-                            <PhoneIcon /> {place.phone}
-                          </Typography>
-                        )}
+                        <Typography
+                          gutterBottom
+                          variant="body2"
+                          color="textSecondary"
+                          className={classes.subtitle}
+                        >
+                          <LocationOnIcon />
+                          {place?.address || "Not Available"}
+                        </Typography>
+
+                        <Typography
+                          variant="body2"
+                          color="textSecondary"
+                          className={classes.spacing}
+                        >
+                          <PhoneIcon /> {place?.phone || "Not Available"}
+                        </Typography>
                       </CardContent>
-                      <CardActions>
+                      <CardActions style={{ marginTop: "1rem" }}>
                         <Button
                           size="small"
                           color="primary"
