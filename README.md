@@ -1,7 +1,7 @@
 ![made-with-React](https://img.shields.io/badge/Made%20with-HTML%20-blue?style=for-the-badge)
 [![Material-UI](https://img.shields.io/badge/Material_UI-0081CB?style=for-the-badge&logo=material-ui&logoColor=white)](https://material-ui.com/)
 ![Time taken](https://img.shields.io/badge/Time%20taken-01W:0H%3A00M%3A00S-tomato?style=for-the-badge&logo=Clockify)
-[![Demo](https://img.shields.io/badge/See%20Demo-Visit-green?style=for-the-badge&logo=web)](link-deploy)
+[![Demo](https://img.shields.io/badge/See%20Demo-Visit-green?style=for-the-badge&logo=web)](https://travel-advisor-five-teal.vercel.app/)
 
 # Travel Advisor
 
