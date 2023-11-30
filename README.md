@@ -7,6 +7,12 @@
 
 App built using React and material ui.
 
+# Features
+
+- Third party api integration for trip advisor data.
+- Google map integration.
+- Save feature where user can save his favourite place.
+
 ### Screenshot
 
 ![Project live image](./travel-advisor.png)
